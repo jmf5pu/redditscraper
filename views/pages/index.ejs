@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+	$(document).ready(function(){
+  		$("#myform").on("submit", function(){
+    		$("#pageloader").fadeIn();
+  		});
+	});
+</script>
+
+<style>
+	#pageloader
+	{
+		background: rgba( 255, 255, 255, 0.8 );
+		display: none;
+		height: 100%;
+		position: fixed;
+		width: 100%;
+		z-index: 9999;
+		text-align: center;
+	}
+
+	#pageloader img
+	{
+		max-width:5%;
+	}
+</style>
+
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<div style="text-align:center;">
+			<form action="/" method="post" id="myform">
+				<input type="text" name="search_regex" placeholder="Regular expression">
+				<input type="number" name="target_count" placeholder="Number of posts to search">
+				<input type="text" name="sub" placeholder="(r/)...">
+				<button type="submit" name="submit">Search</button>
+			</form>
+			<br>
+			<div id="pageloader">
+   				<img src="https://media1.tenor.com/images/d6cd5151c04765d1992edfde14483068/tenor.gif?itemid=5662595" alt="processing..." />
+			</div>
+			<% if (completed) { %>
+		    	<h2>Results:</h2>
+		    	<p>The regular expression <b>"<%= search_str %>"</b> was found <b><%= item_count %></b> times in the top <b><%= target_count %></b> posts on <b>r/<%= sub %></b> (<%= runtime %> s)</p>
+				<% items.forEach(function(item) { %>
+			        <li>
+			            <strong><%= item %></strong>
+			        </li>
+			    <% }); %>
+		    <% } %>
+		</div>
+	</body>
+</html>
+<!--
+	print out occurences
+	print out most common occurrences of the regex
+	create header
+	add top vs hot vs new option
+	create git repo
+	aws?
