@@ -49,17 +49,10 @@
 		    	<p>The regular expression <b>"<%= search_str %>"</b> was found <b><%= item_count %></b> times in the top <b><%= target_count %></b> posts on <b>r/<%= sub %></b> (<%= runtime %> s)</p>
 				<% items.forEach(function(item) { %>
 			        <li>
-			            <strong><%= item %></strong>
+			            <%= item %>
 			        </li>
 			    <% }); %>
 		    <% } %>
 		</div>
 	</body>
 </html>
-<!--
-	print out occurences
-	print out most common occurrences of the regex
-	create header
-	add top vs hot vs new option
-	create git repo
-	aws?

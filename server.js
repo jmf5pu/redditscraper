@@ -110,7 +110,7 @@ server.post("/", async function(req, res) {
 	page.setViewport({ width: 1280, height: 926 });
 	await page.goto('https://www.reddit.com/r/' + sub + '/new/', {waitUntil: 'load', timeout: 0});
 
-	const items = await scrapeAndScroll(page, search_regex, target_count);
+	const items = await scrapeAndScroll(page, search_regex, target_count+2); //+2 accounts for community information <p>'s
 
 	const occurrences = [];
 	for(let i = 0; i < items.length; i++){
